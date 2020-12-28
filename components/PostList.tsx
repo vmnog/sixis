@@ -38,7 +38,7 @@ const posts = [
 
 const PostList: React.FC = () => {
   return (
-    <div className="flex flex-col justify-center items-center px-8 h-screen w-full">
+    <div className="flex flex-col justify-center items-center h-screen w-full">
       <h1 className="text-xl font-semibold text-gray-800 mb-7 ">
         Últimas publicações
       </h1>
