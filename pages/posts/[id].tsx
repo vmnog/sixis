@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { TextField } from '@material-ui/core';
+import { MdKeyboardBackspace } from 'react-icons/md';
 import { useRouter } from 'next/router';
 
 const posts = [
@@ -46,15 +48,61 @@ const Post: React.FC = () => {
   const post = posts.find((post) => post.id === id);
 
   return (
-    <div className="flex flex-col justify-center items-center px-8 h-screen w-full">
-      <Link href="/posts">
-        <a>{'<-'} Voltar</a>
-      </Link>
+    <div className="flex justify-center items-center h-screen w-full px-4 lg:px-56">
+      <div className="flex flex-col w-full">
+        <Link href="/posts">
+          <a className="flex items-center text-xl	mb-4 w-28">
+            <MdKeyboardBackspace size={25} color="#000" className="mr-3" />
+            Voltar
+          </a>
+        </Link>
 
-      <span>{post.title}</span>
-      <span>{post.date}</span>
-      <span>{post.content}</span>
-      <Image src={post.banner} alt={post.title} width={500} height={500} />
+        <h1 className="text-xl font-bold mb-8">Visualizar publicação</h1>
+
+        {!!post && (
+          <>
+            <TextField
+              id="title"
+              label="Título"
+              autoComplete="off"
+              variant="filled"
+              disabled
+              value={post.title}
+            />
+
+            <strong className="mt-8">Banner</strong>
+
+            <div className="my-8 flex items-center justify-center">
+              <Image
+                src={post.banner}
+                alt={post.title}
+                width={1000}
+                height={300}
+                objectFit="cover"
+              />
+            </div>
+
+            <TextField
+              id="content"
+              label="Conteúdo"
+              autoComplete="off"
+              multiline
+              rows={4}
+              rowsMax={4}
+              variant="filled"
+              disabled
+              value={post.content}
+            />
+
+            <button
+              className="bg-red-600 px-8 py-2 rounded-md	text-white mr-5 mt-10 hover:bg-red-800"
+              onClick={() => {}}
+            >
+              Remover
+            </button>
+          </>
+        )}
+      </div>
     </div>
   );
 };

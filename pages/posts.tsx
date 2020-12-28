@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import PostList from '../components/PostList';
+import { MdExitToApp } from 'react-icons/md';
 
 const Posts: React.FC = () => {
   return (
@@ -11,7 +12,14 @@ const Posts: React.FC = () => {
       </Link>
       <PostList />
       <Link href="signin">
-        <a>Logout</a>
+        <a className="flex items-center self-start m-4">
+          <MdExitToApp
+            className="transform rotate-180 mr-2"
+            size={35}
+            color="#000"
+          />
+          Sair
+        </a>
       </Link>
     </div>
   );
